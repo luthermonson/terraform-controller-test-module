@@ -6,7 +6,6 @@ variable host {
 provider "kubernetes" {
   host                   = "${var.host}"
   token                  = "${file("/var/run/secrets/kubernetes.io/serviceaccount/token")}"
-  cluster_ca_certificate = "${file("/var/run/secrets/kubernetes.io/serviceaccount/ca.crt")}"
 }
 
 resource "kubernetes_config_map" "test-config-map" {
