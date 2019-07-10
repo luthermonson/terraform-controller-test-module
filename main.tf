@@ -21,6 +21,9 @@ resource "kubernetes_config_map" "test-config-map" {
   }
 }
 
-output "hostname" {
-  value = "${kubernetes_config_map.test-config-map.data.hostname}"
+output "test_config_map" {
+  value = "${kubernetes_config_map.test-config-map.data.test_config_map}"
+}
+output "test_secret" {
+  value = "${kubernetes_config_map.test-config-map.data.test_secret}"
 }
