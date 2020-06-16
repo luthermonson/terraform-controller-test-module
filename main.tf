@@ -1,9 +1,13 @@
 variable "test_config_map" {}
 variable "test_secret" {}
+terraform {
+  required_providers {
+    kubernetes = "1.11.3"
+  }
+}
 
 provider "kubernetes" {
-  host     = "https://10.43.0.1"
-  token    = "${file("/var/run/secrets/kubernetes.io/serviceaccount/token")}"
+  load_config_file = "false"
 }
 resource "kubernetes_config_map" "test-config-map" {
   metadata {
