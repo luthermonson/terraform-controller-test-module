@@ -1,4 +1,7 @@
 variable "test_config_map" {}
+variable "test_config_map_env" {
+  default = "terraform-controller"
+}
 variable "test_secret" {}
 terraform {
   required_providers {
@@ -12,7 +15,7 @@ provider "kubernetes" {
 resource "kubernetes_config_map" "test-config-map" {
   metadata {
     name      = "test-config-map"
-    namespace = "terraform-controller"
+    namespace = var.test_config_map_env
   }
 
   data = {
